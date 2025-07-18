@@ -2,7 +2,9 @@
  "nodeModulesDir": "auto",
  "tasks": {
   "dev": "deno run --allow-net --allow-read --allow-env --watch ./src/main.ts",
-  "compile": "deno compile --allow-all ./src/main.ts"
+  "compile": "deno compile --allow-all ./src/main.ts",
+  "db:generate": "deno run --env-file=.env --allow-all --node-modules-dir=auto npm:drizzle-kit generate",
+  "db:migrate": "deno run --env-file=.env --allow-all --node-modules-dir=auto npm:drizzle-kit migrate"
  },
  "imports": {
   "@std/dotenv": "jsr:@std/dotenv@^0.225.5",

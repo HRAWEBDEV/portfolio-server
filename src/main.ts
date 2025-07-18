@@ -1,3 +1,4 @@
+import '@std/dotenv/load';
 import express from 'express';
 import { load } from '@std/dotenv';
 import { rateLimit } from 'express-rate-limit';
@@ -6,7 +7,6 @@ import helmet from 'helmet';
 
 // load env files
 await load({ envPath: '.env.local', export: true });
-await load({ envPath: '.env', export: true });
 //
 const app = express();
 // rate limiter

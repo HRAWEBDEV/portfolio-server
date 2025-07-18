@@ -4,6 +4,8 @@
     "jsr:@std/dotenv@~0.225.5": "0.225.5",
     "npm:@types/express@^5.0.3": "5.0.3",
     "npm:cors@^2.8.5": "2.8.5",
+    "npm:drizzle-kit@*": "0.31.4_esbuild@0.25.6",
+    "npm:drizzle-kit@0.31.4": "0.31.4_esbuild@0.25.6",
     "npm:drizzle-kit@~0.31.4": "0.31.4_esbuild@0.25.6",
     "npm:drizzle-orm@~0.44.3": "0.44.3",
     "npm:express-rate-limit@^8.0.1": "8.0.1_express@5.1.0",
