@@ -4,6 +4,8 @@ import { load } from '@std/dotenv';
 import { rateLimit } from 'express-rate-limit';
 import cors from 'cors';
 import helmet from 'helmet';
+import { testConnection } from './db/index.ts';
+import { start } from 'node:repl';
 
 // load env files
 await load({ envPath: '.env.local', export: true });
@@ -37,10 +39,16 @@ app.get('/', (_req, res) => {
   data: 'success',
  });
 });
-// start server
+// start app
 const PORT = Deno.env.get('PORT') || 8080;
-
 function onListen() {
  console.log(`server is listening to port ${PORT}`);
 }
-app.listen(PORT, onListen);
+async function startApp() {
+ if (await testConnection()) {
+  app.listen(PORT, onListen);
+ } else {
+  console.log('failed to start app');
+ }
+}
+startApp();
