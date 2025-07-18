@@ -2,6 +2,7 @@ import express from 'express';
 import { load } from '@std/dotenv';
 import { rateLimit } from 'express-rate-limit';
 import cors from 'cors';
+import helmet from 'helmet';
 
 // load env files
 await load({ envPath: '.env.local', export: true });
@@ -21,6 +22,8 @@ app.use(rateLimiter);
 // cors
 const corsOptions = {};
 app.use(cors(corsOptions));
+// helmet
+app.use(helmet());
 // handlers
 app.get('/healthy', (_req, res) => {
  res.json({
