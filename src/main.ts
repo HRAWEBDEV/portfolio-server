@@ -5,7 +5,6 @@ import { rateLimit } from 'express-rate-limit';
 import cors from 'cors';
 import helmet from 'helmet';
 import { testConnection } from './db/index.ts';
-import { start } from 'node:repl';
 
 // load env files
 await load({ envPath: '.env.local', export: true });
