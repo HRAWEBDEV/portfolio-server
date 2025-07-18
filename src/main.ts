@@ -2,6 +2,7 @@ import express from 'express';
 import { load } from '@std/dotenv';
 import { rateLimit } from 'express-rate-limit';
 import { cors } from 'cors';
+import { STATUS_CODES } from 'node:http';
 
 // load env files
 await load({ envPath: '.env.local', export: true });
@@ -22,12 +23,18 @@ app.use(rateLimiter);
 const corsOptions = {};
 app.use(cors(corsOptions));
 // handlers
+app.get('/healthy', (_req, res) => {
+ res.json({
+  status: 'success',
+  message: 'api is listening',
+ });
+});
+
 app.get('/', (_req, res) => {
  res.json({
   data: 'success',
  });
 });
-
 // start server
 const PORT = Deno.env.get('PORT') || 8080;
 
