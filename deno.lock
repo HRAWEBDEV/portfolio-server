@@ -3,6 +3,7 @@
   "specifiers": {
     "jsr:@std/dotenv@~0.225.5": "0.225.5",
     "npm:@types/express@^5.0.3": "5.0.3",
+    "npm:express-rate-limit@^8.0.1": "8.0.1_express@5.1.0",
     "npm:express@^5.1.0": "5.1.0",
     "npm:p@*": "0.2.0",
     "npm:pa@*": "0.1.1",
@@ -175,6 +176,13 @@
     "etag@1.8.1": {
       "integrity": "sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg=="
     },
+    "express-rate-limit@8.0.1_express@5.1.0": {
+      "integrity": "sha512-aZVCnybn7TVmxO4BtlmnvX+nuz8qHW124KKJ8dumsBsmv5ZLxE0pYu7S2nwyRBGHHCAzdmnGyrc5U/rksSPO7Q==",
+      "dependencies": [
+        "express",
+        "ip-address"
+      ]
+    },
     "express@5.1.0": {
       "integrity": "sha512-DT9ck5YIRU+8GYzzU5kT3eHGA5iL+1Zd0EutOmTE9Dtk+Tvuzd23VBU+ec7HPNSTxXYO55gPV/hq4pSBJDjFpA==",
       "dependencies": [
@@ -282,6 +290,9 @@
     },
     "inherits@2.0.4": {
       "integrity": "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ=="
+    },
+    "ip-address@10.0.1": {
+      "integrity": "sha512-NWv9YLW4PoW2B7xtzaS3NCot75m6nK7Icdv0o3lfMceJVRfSoQwqD4wEH5rLwoKJwUiZ/rfpiVBhnaF0FK4HoA=="
     },
     "ipaddr.js@1.9.1": {
       "integrity": "sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g=="
@@ -514,6 +525,7 @@
     "dependencies": [
       "jsr:@std/dotenv@~0.225.5",
       "npm:@types/express@^5.0.3",
+      "npm:express-rate-limit@^8.0.1",
       "npm:express@^5.1.0"
     ]
   }
