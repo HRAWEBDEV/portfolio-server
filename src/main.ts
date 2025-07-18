@@ -1,7 +1,7 @@
 import express from 'express';
 import { load } from '@std/dotenv';
 import { rateLimit } from 'express-rate-limit';
-import { cors } from 'cors';
+import cors from 'cors';
 
 // load env files
 await load({ envPath: '.env.local', export: true });
