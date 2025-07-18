@@ -1,0 +1,10 @@
+{
+ "nodeModulesDir": "auto",
+ "tasks": {
+  "dev": "deno run --allow-net --watch ./src/main.ts"
+ },
+ "imports": {
+  "@types/express": "npm:@types/express@^5.0.3",
+  "express": "npm:express@^5.1.0"
+ }
+}
