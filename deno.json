@@ -8,8 +8,11 @@
   "@std/dotenv": "jsr:@std/dotenv@^0.225.5",
   "@types/express": "npm:@types/express@^5.0.3",
   "cors": "npm:cors@^2.8.5",
+  "drizzle-kit": "npm:drizzle-kit@^0.31.4",
+  "drizzle-orm": "npm:drizzle-orm@^0.44.3",
   "express": "npm:express@^5.1.0",
   "express-rate-limit": "npm:express-rate-limit@^8.0.1",
-  "helmet": "npm:helmet@^8.1.0"
+  "helmet": "npm:helmet@^8.1.0",
+  "mysql2": "npm:mysql2@^3.14.2"
  }
 }
