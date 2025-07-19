@@ -1,5 +1,6 @@
 import { drizzle } from 'drizzle-orm/mysql2';
 import mysql from 'mysql2/promise';
+import * as schema from './schema.ts';
 
 const poolConnection = mysql.createPool({
  database: Deno.env.get('DB_DATABASE'),
@@ -11,6 +12,8 @@ const poolConnection = mysql.createPool({
 
 const db = drizzle({
  client: poolConnection,
+ schema,
+ mode: 'default',
 });
 
 async function testConnection(): Promise<boolean> {
