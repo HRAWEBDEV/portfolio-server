@@ -2,6 +2,7 @@ import { drizzle } from 'drizzle-orm/mysql2';
 import mysql from 'mysql2/promise';
 
 const poolConnection = mysql.createPool({
+ database: Deno.env.get('DB_DATABASE'),
  host: Deno.env.get('DB_HOST'),
  user: Deno.env.get('DB_USER'),
  password: Deno.env.get('DB_PASSWORD'),

@@ -8,6 +8,6 @@ export default defineConfig({
   host: Deno.env.get('DB_HOST')!,
   user: Deno.env.get('DB_USER')!,
   password: Deno.env.get('DB_PASSWORD')!,
-  database: 'portfolio',
+  database: Deno.env.get('DB_DATABASE')!,
  },
 });

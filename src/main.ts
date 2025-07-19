@@ -5,11 +5,14 @@ import { rateLimit } from 'express-rate-limit';
 import cors from 'cors';
 import helmet from 'helmet';
 import { testConnection } from './db/index.ts';
+import testsRouter from './v1/routes/tests.ts';
 
 // load env files
 await load({ envPath: '.env.local', export: true });
 //
+const appVersion = Deno.env.get('VERSION') || '';
 const app = express();
+const appBaseUri = `/api/${appVersion}`;
 // rate limiter
 const rateLimiter = rateLimit({
  windowMs: 5 * 60 * 1000, // 5 min
@@ -33,10 +36,13 @@ app.get('/healthy', (_req, res) => {
  });
 });
 // routes
+app.use(`${appBaseUri}/tests`, testsRouter);
 // start app
 const PORT = Deno.env.get('PORT') || 8080;
 function onListen() {
- console.log(`server is listening to port ${PORT}`);
+ console.log(`server is listening to port: ${PORT}`);
+ console.log(`app version: ${appVersion}`);
+ console.log(`app base uri: ${appBaseUri}`);
 }
 async function startApp() {
  if (await testConnection()) {
