@@ -12,7 +12,7 @@ await load({ envPath: '.env.local', export: true });
 const app = express();
 // rate limiter
 const rateLimiter = rateLimit({
- windowMs: 5 * 60 * 1000, // 15 min
+ windowMs: 5 * 60 * 1000, // 5 min
  limit: 100,
  standardHeaders: 'draft-8',
  legacyHeaders: false,
@@ -32,12 +32,7 @@ app.get('/healthy', (_req, res) => {
   message: 'api is listening',
  });
 });
-
-app.get('/', (_req, res) => {
- res.json({
-  data: 'success',
- });
-});
+// routes
 // start app
 const PORT = Deno.env.get('PORT') || 8080;
 function onListen() {
