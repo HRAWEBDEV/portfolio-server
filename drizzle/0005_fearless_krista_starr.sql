@@ -1,1 +1,0 @@
-ALTER TABLE `test` MODIFY COLUMN `created_at` timestamp;

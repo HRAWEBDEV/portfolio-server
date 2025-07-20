@@ -1,17 +1,7 @@
-import {
- mysqlTable,
- serial,
- varchar,
- int,
- timestamp,
-} from 'drizzle-orm/mysql-core';
+import { mysqlTable, serial, varchar, int } from 'drizzle-orm/mysql-core';
+import { defaultTimestamps } from '../utils/defaultTimestamps.ts';
 
-const defaultTimestamps = {
- createdAt: timestamp('created_at').$default(() => new Date()),
- updatedAt: timestamp('updated_at').$onUpdateFn(() => new Date()),
-};
-
-const testTable = mysqlTable('test', {
+const testTable = mysqlTable('tests', {
  id: serial('id').primaryKey(),
  firstName: varchar('first_name', { length: 255 }).notNull(),
  lastName: varchar('last_name', { length: 255 }).notNull(),

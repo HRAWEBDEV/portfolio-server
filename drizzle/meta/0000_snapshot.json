@@ -1,11 +1,11 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "dcd31229-afb4-48c7-bea8-1264d7a9d7e0",
+  "id": "052bdf32-e551-47a5-9355-369f303c0c3c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "test": {
-      "name": "test",
+    "tests": {
+      "name": "tests",
       "columns": {
         "id": {
           "name": "id",
@@ -14,9 +14,44 @@
           "notNull": true,
           "autoincrement": true
         },
-        "test": {
-          "name": "test",
-          "type": "varchar(10)",
+        "first_name": {
+          "name": "first_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "age": {
+          "name": "age",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -25,8 +60,8 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "test_id": {
-          "name": "test_id",
+        "tests_id": {
+          "name": "tests_id",
           "columns": [
             "id"
           ]

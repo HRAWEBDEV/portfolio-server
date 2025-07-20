@@ -5,10 +5,22 @@ import { testTable } from '../../db/schema.ts';
 import { eq } from 'drizzle-orm';
 
 async function getTests(_: Request, res: Response) {
- const data = await db.query.testTable.findMany();
+ const [data, count] = await Promise.all([
+  db.query.testTable.findMany({
+   limit: 2,
+   offset: 0,
+  }),
+  db.$count(testTable),
+ ]);
+
  res.json(
   getResponse({
-   data,
+   data: {
+    data,
+    count,
+    limit: 1,
+    offset: 0,
+   },
   })
  );
 }

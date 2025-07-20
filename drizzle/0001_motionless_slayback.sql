@@ -1,1 +1,0 @@
-ALTER TABLE `test` RENAME COLUMN `test` TO `other`;
