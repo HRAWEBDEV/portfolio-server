@@ -1,0 +1,1 @@
+ALTER TABLE `test` ADD `updated_at` timestamp;

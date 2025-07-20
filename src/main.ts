@@ -13,6 +13,8 @@ await load({ envPath: '.env.local', export: true });
 const appVersion = Deno.env.get('VERSION') || '';
 const app = express();
 const appBaseUri = `/api/${appVersion}`;
+//
+app.use(express.json());
 // rate limiter
 const rateLimiter = rateLimit({
  windowMs: 5 * 60 * 1000, // 5 min

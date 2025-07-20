@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { db } from '../../db/index.ts';
 import { getResponse } from '../../utils/getResponse.ts';
+import { testTable } from '../../db/schema.ts';
+import { eq } from 'drizzle-orm';
 
 async function getTests(_: Request, res: Response) {
  const data = await db.query.testTable.findMany();
@@ -11,4 +13,57 @@ async function getTests(_: Request, res: Response) {
  );
 }
 
-export { getTests };
+async function insertTest(req: Request, res: Response) {
+ const { firstName, lastName, age, email } = req.body;
+ const insertResult = await db
+  .insert(testTable)
+  .values([
+   {
+    firstName,
+    lastName,
+    age,
+    email,
+   },
+  ])
+  .$returningId();
+ res.json(
+  getResponse({
+   data: insertResult,
+  })
+ );
+}
+
+async function updateTest(req: Request, res: Response) {
+ const testID = req.params?.id;
+ if (testID) {
+  res.json(getResponse({}));
+ }
+ const { firstName, lastName, age, email } = req.body;
+ const updateResult = await db
+  .update(testTable)
+  .set({
+   firstName,
+   lastName,
+   age,
+   email,
+  })
+  .where(eq(testTable.id, Number(testID)));
+ res.json(
+  getResponse({
+   data: updateResult,
+  })
+ );
+}
+async function deleteTest(req: Request, res: Response) {
+ const testID = req.params?.id;
+ const updateResult = await db
+  .delete(testTable)
+  .where(eq(testTable.id, Number(testID)));
+ res.json(
+  getResponse({
+   data: updateResult,
+  })
+ );
+}
+
+export { getTests, insertTest, updateTest, deleteTest };

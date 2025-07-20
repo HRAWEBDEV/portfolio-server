@@ -1,8 +1,14 @@
 import { Router } from 'express';
-import { getTests } from '../controllers/tests.ts';
+import {
+ getTests,
+ insertTest,
+ updateTest,
+ deleteTest,
+} from '../controllers/tests.ts';
 
 const router = Router();
 
-router.route('/').get(getTests);
+router.route('/').get(getTests).post(insertTest);
+router.route('/:id').put(updateTest).delete(deleteTest);
 
 export default router;
