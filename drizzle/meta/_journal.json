@@ -15,6 +15,13 @@
       "when": 1752911245272,
       "tag": "0001_motionless_slayback",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1752994801896,
+      "tag": "0002_groovy_firestar",
+      "breakpoints": true
     }
   ]
 }
