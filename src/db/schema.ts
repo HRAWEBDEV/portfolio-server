@@ -6,14 +6,18 @@ import {
  timestamp,
 } from 'drizzle-orm/mysql-core';
 
+const defaultTimestamps = {
+ createdAt: timestamp('created_at').$default(() => new Date()),
+ updatedAt: timestamp('updated_at').$onUpdateFn(() => new Date()),
+};
+
 const testTable = mysqlTable('test', {
  id: serial('id').primaryKey(),
  firstName: varchar('first_name', { length: 255 }).notNull(),
  lastName: varchar('last_name', { length: 255 }).notNull(),
  age: int('age').notNull(),
  email: varchar('email', { length: 255 }),
- createdAt: timestamp('created_at').$default(() => new Date()),
- updatedAt: timestamp('updated_at').$onUpdateFn(() => new Date()),
+ ...defaultTimestamps,
 });
 
 type NewTest = typeof testTable.$inferSelect;
