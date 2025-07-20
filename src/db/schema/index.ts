@@ -1,2 +1,2 @@
-import { testTable } from './test.ts';
-export { testTable };
+import { tests } from './test.ts';
+export { tests };

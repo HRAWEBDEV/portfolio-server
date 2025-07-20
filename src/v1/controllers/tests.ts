@@ -1,16 +1,16 @@
 import { Request, Response } from 'express';
 import { db } from '../../db/index.ts';
 import { getResponse } from '../../utils/getResponse.ts';
-import { testTable } from '../../db/schema.ts';
+import { tests } from '../../db/schema/test.ts';
 import { eq } from 'drizzle-orm';
 
 async function getTests(_: Request, res: Response) {
  const [data, count] = await Promise.all([
-  db.query.testTable.findMany({
+  db.query.tests.findMany({
    limit: 2,
    offset: 0,
   }),
-  db.$count(testTable),
+  db.$count(tests),
  ]);
 
  res.json(
@@ -28,7 +28,7 @@ async function getTests(_: Request, res: Response) {
 async function insertTest(req: Request, res: Response) {
  const { firstName, lastName, age, email } = req.body;
  const insertResult = await db
-  .insert(testTable)
+  .insert(tests)
   .values([
    {
     firstName,
@@ -52,14 +52,14 @@ async function updateTest(req: Request, res: Response) {
  }
  const { firstName, lastName, age, email } = req.body;
  const updateResult = await db
-  .update(testTable)
+  .update(tests)
   .set({
    firstName,
    lastName,
    age,
    email,
   })
-  .where(eq(testTable.id, Number(testID)));
+  .where(eq(tests.id, Number(testID)));
  res.json(
   getResponse({
    data: updateResult,
@@ -69,8 +69,8 @@ async function updateTest(req: Request, res: Response) {
 async function deleteTest(req: Request, res: Response) {
  const testID = req.params?.id;
  const updateResult = await db
-  .delete(testTable)
-  .where(eq(testTable.id, Number(testID)));
+  .delete(tests)
+  .where(eq(tests.id, Number(testID)));
  res.json(
   getResponse({
    data: updateResult,

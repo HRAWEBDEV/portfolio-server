@@ -1,7 +1,7 @@
 import { mysqlTable, serial, varchar, int } from 'drizzle-orm/mysql-core';
 import { defaultTimestamps } from '../utils/defaultTimestamps.ts';
 
-const testTable = mysqlTable('tests', {
+const tests = mysqlTable('tests', {
  id: serial('id').primaryKey(),
  firstName: varchar('first_name', { length: 255 }).notNull(),
  lastName: varchar('last_name', { length: 255 }).notNull(),
@@ -10,6 +10,6 @@ const testTable = mysqlTable('tests', {
  ...defaultTimestamps,
 });
 
-type NewTest = typeof testTable.$inferSelect;
+type NewTest = typeof tests.$inferSelect;
 
-export { type NewTest, testTable };
+export { type NewTest, tests };
