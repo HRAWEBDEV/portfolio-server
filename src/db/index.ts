@@ -14,6 +14,7 @@ const db = drizzle({
  client: poolConnection,
  schema,
  mode: 'default',
+ casing:"snake_case"
 });
 
 async function testConnection(): Promise<boolean> {
