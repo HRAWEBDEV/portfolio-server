@@ -9,6 +9,6 @@ import {
 const router = Router();
 
 router.route('/').get(getTests).post(insertTest);
-router.route('/:id').put(updateTest).delete(deleteTest);
+router.route('/:id').patch(updateTest).delete(deleteTest);
 
 export default router;
