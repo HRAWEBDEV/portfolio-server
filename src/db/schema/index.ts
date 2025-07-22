@@ -1,2 +1,3 @@
 import { tests } from './test.ts';
-export { tests };
+import { persons } from './person.ts';
+export { tests, persons };
