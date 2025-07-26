@@ -11,6 +11,7 @@
     "npm:express-rate-limit@^8.0.1": "8.0.1_express@5.1.0",
     "npm:express@^5.1.0": "5.1.0",
     "npm:helmet@^8.1.0": "8.1.0",
+    "npm:http-status@^2.1.0": "2.1.0",
     "npm:mysql2@^3.14.2": "3.14.2",
     "npm:p@*": "0.2.0",
     "npm:pa@*": "0.1.1",
@@ -659,6 +660,9 @@
         "toidentifier"
       ]
     },
+    "http-status@2.1.0": {
+      "integrity": "sha512-O5kPr7AW7wYd/BBiOezTwnVAnmSNFY+J7hlZD2X5IOxVBetjcHAiTXhzj0gMrnojQlwy+UT1/Y3H3vJ3UlmvLA=="
+    },
     "iconv-lite@0.6.3": {
       "integrity": "sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==",
       "dependencies": [
@@ -971,6 +975,7 @@
       "npm:express-rate-limit@^8.0.1",
       "npm:express@^5.1.0",
       "npm:helmet@^8.1.0",
+      "npm:http-status@^2.1.0",
       "npm:mysql2@^3.14.2",
       "npm:zod@^4.0.5"
     ]

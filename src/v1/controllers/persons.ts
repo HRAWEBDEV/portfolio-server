@@ -17,14 +17,12 @@ async function insertPerson(req: Request, res: Response) {
  const { firstName, lastName, age, isMarried } = req.body;
  const insetResult = await db
   .insert(persons)
-  .values([
-   {
-    firstName,
-    lastName,
-    age,
-    isMarried,
-   },
-  ])
+  .values({
+   firstName,
+   lastName,
+   age,
+   isMarried,
+  })
   .$returningId();
  res.json(
   getResponse({
@@ -36,7 +34,7 @@ async function insertPerson(req: Request, res: Response) {
 async function updatePerson(req: Request, res: Response) {
  const personID = req.params.id;
  const { firstName, lastName, age, isMarried } = req.body;
- const updateResult = await db
+ await db
   .update(persons)
   .set({
    firstName,
@@ -47,7 +45,11 @@ async function updatePerson(req: Request, res: Response) {
   .where(eq(persons.id, Number(personID)));
  res.json(
   getResponse({
-   data: updateResult,
+   data: [
+    {
+     id: personID,
+    },
+   ],
   })
  );
 }
