@@ -8,6 +8,7 @@ import { testConnection } from '@/db/index.ts';
 import testsRouter from '@/v1/routes/tests.ts';
 import personsRouter from '@/v1/routes/persons.ts';
 import { notFoundHandler } from './utils/notFoundHandler.ts';
+import { expressCatchErrors } from './utils/expressCatchErrors.ts';
 
 // load env files
 await load({ envPath: '.env.local', export: true });
@@ -44,6 +45,7 @@ app.use(`${appBaseUri}/tests`, testsRouter);
 app.use(`${appBaseUri}/persons`, personsRouter);
 // not found
 app.use(notFoundHandler);
+app.use(expressCatchErrors);
 // start app
 const PORT = Deno.env.get('PORT') || 8080;
 function onListen() {

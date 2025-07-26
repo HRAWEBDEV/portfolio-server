@@ -5,6 +5,7 @@ import { getResponse } from '@/utils/getResponse.ts';
 import { eq } from 'drizzle-orm';
 
 async function getPersons(_: Request, res: Response) {
+ throw new Error('test');
  const data = await db.query.persons.findMany();
  res.json(
   getResponse({
