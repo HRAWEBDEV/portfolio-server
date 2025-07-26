@@ -16,7 +16,7 @@ type Person = typeof persons.$inferSelect;
 type UpdatePerson = typeof persons.$inferInsert;
 
 const persons = mysqlTable('persons', {
- id: serial('id').primaryKey(),
+ id: int('id').autoincrement().primaryKey(),
  firstName: varchar('first_name', { length: 100 }).notNull(),
  lastName: varchar('last_name', { length: 150 }).notNull(),
  isMarried: boolean('is_married').default(false),

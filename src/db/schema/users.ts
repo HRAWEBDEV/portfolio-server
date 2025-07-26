@@ -1,10 +1,10 @@
-import { mysqlTable, serial, int } from 'drizzle-orm/mysql-core';
-import { persons } from './persons.ts';
+import { int, mysqlTable, serial } from 'drizzle-orm/mysql-core';
 import {
  createSelectSchema,
  createUpdateSchema,
  createInsertSchema,
 } from 'drizzle-zod';
+import { persons } from './persons.ts';
 
 type User = typeof users.$inferSelect;
 type UpdateUser = typeof users.$inferInsert;
