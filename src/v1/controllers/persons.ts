@@ -1,5 +1,9 @@
 import { Request, Response } from 'express';
-import { persons, updatePersonSchema } from '@/db/schema/person.ts';
+import {
+ persons,
+ insertPersonSchema,
+ updatePersonSchema,
+} from '@/db/schema/person.ts';
 import { db } from '@/db/index.ts';
 import { getResponse } from '@/utils/getResponse.ts';
 import { eq } from 'drizzle-orm';
@@ -15,15 +19,14 @@ async function getPersons(_: Request, res: Response) {
 
 async function insertPerson(req: Request, res: Response) {
  const { firstName, lastName, age, isMarried } = req.body;
- const insetResult = await db
-  .insert(persons)
-  .values({
-   firstName,
-   lastName,
-   age,
-   isMarried,
-  })
-  .$returningId();
+ const newPerson = {
+  firstName,
+  lastName,
+  age,
+  isMarried,
+ };
+ insertPersonSchema.parse(newPerson);
+ const insetResult = await db.insert(persons).values(newPerson).$returningId();
  res.json(
   getResponse({
    data: insetResult,
@@ -33,22 +36,17 @@ async function insertPerson(req: Request, res: Response) {
 
 async function updatePerson(req: Request, res: Response) {
  const personID = req.params.id;
+ const id = Number.parseInt(personID);
  const { firstName, lastName, age, isMarried } = req.body;
- updatePersonSchema.parse({
+ const newPerson = {
   firstName,
   lastName,
   age,
   isMarried,
- });
- await db
-  .update(persons)
-  .set({
-   firstName,
-   lastName,
-   age,
-   isMarried,
-  })
-  .where(eq(persons.id, Number(personID)));
+ };
+ insertPersonSchema.shape.id.parse(id);
+ updatePersonSchema.parse(newPerson);
+ await db.update(persons).set(newPerson).where(eq(persons.id, id));
  res.json(
   getResponse({
    data: [
@@ -62,9 +60,9 @@ async function updatePerson(req: Request, res: Response) {
 
 async function deletePerson(req: Request, res: Response) {
  const personID = req.params.id;
- const deleteResult = await db
-  .delete(persons)
-  .where(eq(persons.id, Number(personID)));
+ const id = Number.parseInt(personID);
+ insertPersonSchema.shape.id.parse(id);
+ const deleteResult = await db.delete(persons).where(eq(persons.id, id));
  res.json(
   getResponse({
    data: deleteResult,
