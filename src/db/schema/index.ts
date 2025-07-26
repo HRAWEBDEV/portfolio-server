@@ -1,3 +1,3 @@
-import { tests } from './test.ts';
-import { persons } from './person.ts';
+import { tests } from './tests.ts';
+import { persons } from './persons.ts';
 export { tests, persons };

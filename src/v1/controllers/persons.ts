@@ -3,7 +3,7 @@ import {
  persons,
  insertPersonSchema,
  updatePersonSchema,
-} from '@/db/schema/person.ts';
+} from '../../db/schema/persons.ts';
 import { db } from '@/db/index.ts';
 import { getResponse } from '@/utils/getResponse.ts';
 import { eq } from 'drizzle-orm';
