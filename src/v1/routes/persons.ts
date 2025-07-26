@@ -12,7 +12,7 @@ const router = Router();
 router.route('/').get(wrap(getPersons)).post(wrap(insertPerson));
 router
  .route('/:id')
- .get(getPerson)
+ .get(wrap(getPerson))
  .patch(wrap(updatePerson))
  .delete(wrap(deletePerson));
 
