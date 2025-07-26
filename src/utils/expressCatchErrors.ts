@@ -2,6 +2,7 @@ import { ErrorRequestHandler } from 'express';
 import { status } from 'http-status';
 import { getResponse } from './getResponse.ts';
 import { ZodError } from 'zod';
+import { NotFound } from './NotFound.ts';
 
 export const expressCatchErrors: ErrorRequestHandler = (
  err,
@@ -20,7 +21,16 @@ export const expressCatchErrors: ErrorRequestHandler = (
   );
   return;
  }
- //  what else should be handled here?
+ // not found
+ if (err instanceof NotFound) {
+  res.status(status.NOT_FOUND).json(
+   getResponse({
+    status: resStatus,
+    message: err.message,
+   })
+  );
+  return;
+ }
  //
  res.status(status.INTERNAL_SERVER_ERROR).json(
   getResponse({
