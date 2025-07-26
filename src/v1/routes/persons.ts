@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import {
  getPersons,
+ getPerson,
  updatePerson,
  insertPerson,
  deletePerson,
@@ -9,6 +10,10 @@ import { wrap } from '@/utils/expressAsyncWrapper.ts';
 
 const router = Router();
 router.route('/').get(wrap(getPersons)).post(wrap(insertPerson));
-router.route('/:id').patch(wrap(updatePerson)).delete(wrap(deletePerson));
+router
+ .route('/:id')
+ .get(getPerson)
+ .patch(wrap(updatePerson))
+ .delete(wrap(deletePerson));
 
 export default router;

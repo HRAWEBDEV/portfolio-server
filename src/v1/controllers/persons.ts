@@ -18,6 +18,23 @@ async function getPersons(_: Request, res: Response) {
  );
 }
 
+async function getPerson(req: Request, res: Response) {
+ const personID = req.params.id;
+ const id = Number.parseInt(personID);
+ insertPersonSchema.shape.id.parse(id);
+ const person = await db.query.persons.findFirst({
+  where: eq(persons.id, id),
+ });
+ if (!person) {
+  throw new NotFound();
+ }
+ res.json(
+  getResponse({
+   data: person,
+  })
+ );
+}
+
 async function insertPerson(req: Request, res: Response) {
  const { firstName, lastName, age, isMarried } = req.body;
  const newPerson = {
@@ -80,4 +97,4 @@ async function deletePerson(req: Request, res: Response) {
  );
 }
 
-export { getPersons, insertPerson, updatePerson, deletePerson };
+export { getPersons, getPerson, insertPerson, updatePerson, deletePerson };
