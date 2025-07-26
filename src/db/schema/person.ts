@@ -6,6 +6,14 @@ import {
  int,
 } from 'drizzle-orm/mysql-core';
 import { defaultTimestamps } from '../utils/defaultTimestamps.ts';
+import {
+ createSelectSchema,
+ createUpdateSchema,
+ createInsertSchema,
+} from 'drizzle-zod';
+
+type Person = typeof persons.$inferSelect;
+type UpdatePerson = typeof persons.$inferInsert;
 
 const persons = mysqlTable('persons', {
  id: serial('id').primaryKey(),
@@ -16,6 +24,15 @@ const persons = mysqlTable('persons', {
  ...defaultTimestamps,
 });
 
-type Person = typeof persons.$inferSelect;
+const selectPersonSchema = createSelectSchema(persons);
+const insertPersonSchema = createInsertSchema(persons);
+const updatePersonSchema = createUpdateSchema(persons);
 
-export { type Person, persons };
+export {
+ type Person,
+ type UpdatePerson,
+ persons,
+ selectPersonSchema,
+ updatePersonSchema,
+ insertPersonSchema,
+};

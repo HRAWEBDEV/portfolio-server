@@ -7,7 +7,8 @@
     "npm:drizzle-kit@*": "0.31.4_esbuild@0.25.6",
     "npm:drizzle-kit@0.31.4": "0.31.4_esbuild@0.25.6",
     "npm:drizzle-kit@~0.31.4": "0.31.4_esbuild@0.25.6",
-    "npm:drizzle-orm@~0.44.3": "0.44.3",
+    "npm:drizzle-orm@~0.44.3": "0.44.3_mysql2@3.14.2",
+    "npm:drizzle-zod@~0.8.2": "0.8.2_drizzle-orm@0.44.3__mysql2@3.14.2_zod@4.0.5_mysql2@3.14.2",
     "npm:express-rate-limit@^8.0.1": "8.0.1_express@5.1.0",
     "npm:express@^5.1.0": "5.1.0",
     "npm:helmet@^8.1.0": "8.1.0",
@@ -440,6 +441,22 @@
     },
     "drizzle-orm@0.44.3": {
       "integrity": "sha512-8nIiYQxOpgUicEL04YFojJmvC4DNO4KoyXsEIqN44+g6gNBr6hmVpWk3uyAt4CaTiRGDwoU+alfqNNeonLAFOQ=="
+    },
+    "drizzle-orm@0.44.3_mysql2@3.14.2": {
+      "integrity": "sha512-8nIiYQxOpgUicEL04YFojJmvC4DNO4KoyXsEIqN44+g6gNBr6hmVpWk3uyAt4CaTiRGDwoU+alfqNNeonLAFOQ==",
+      "dependencies": [
+        "mysql2"
+      ],
+      "optionalPeers": [
+        "mysql2"
+      ]
+    },
+    "drizzle-zod@0.8.2_drizzle-orm@0.44.3__mysql2@3.14.2_zod@4.0.5_mysql2@3.14.2": {
+      "integrity": "sha512-9Do/16OjFFNrQDZgvMtxtDDwKWbFOxUAIwNPKX98SfxrP8H18vhN1BvNXbhelLcdgCE7GEaXDJqBjMExSkhpkA==",
+      "dependencies": [
+        "drizzle-orm@0.44.3_mysql2@3.14.2",
+        "zod"
+      ]
     },
     "dunder-proto@1.0.1": {
       "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
@@ -972,6 +989,7 @@
       "npm:cors@^2.8.5",
       "npm:drizzle-kit@~0.31.4",
       "npm:drizzle-orm@~0.44.3",
+      "npm:drizzle-zod@~0.8.2",
       "npm:express-rate-limit@^8.0.1",
       "npm:express@^5.1.0",
       "npm:helmet@^8.1.0",

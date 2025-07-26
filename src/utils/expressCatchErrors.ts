@@ -12,7 +12,7 @@ export const expressCatchErrors: ErrorRequestHandler = (
  res.status(status.INTERNAL_SERVER_ERROR).json(
   getResponse({
    status: 'failed',
-   message: 'An internal server error occurred. Please try again later.',
+   message: err.message,
   })
  );
 };

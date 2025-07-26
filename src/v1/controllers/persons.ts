@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
-import { persons } from '@/db/schema/index.ts';
+import { persons, updatePersonSchema } from '@/db/schema/person.ts';
 import { db } from '@/db/index.ts';
 import { getResponse } from '@/utils/getResponse.ts';
 import { eq } from 'drizzle-orm';
 
 async function getPersons(_: Request, res: Response) {
- throw new Error('test');
  const data = await db.query.persons.findMany();
  res.json(
   getResponse({
@@ -35,6 +34,12 @@ async function insertPerson(req: Request, res: Response) {
 async function updatePerson(req: Request, res: Response) {
  const personID = req.params.id;
  const { firstName, lastName, age, isMarried } = req.body;
+ updatePersonSchema.parse({
+  firstName,
+  lastName,
+  age,
+  isMarried,
+ });
  await db
   .update(persons)
   .set({
