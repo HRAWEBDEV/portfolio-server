@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { persons } from '../../db/schema/index.ts';
-import { db } from '../../db/index.ts';
-import { getResponse } from '../../utils/getResponse.ts';
+import { persons } from '@/db/schema/index.ts';
+import { db } from '@/db/index.ts';
+import { getResponse } from '@/utils/getResponse.ts';
 import { eq } from 'drizzle-orm';
 
 async function getPersons(_: Request, res: Response) {

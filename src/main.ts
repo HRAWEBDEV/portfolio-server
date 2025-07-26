@@ -4,9 +4,9 @@ import { load } from '@std/dotenv';
 import { rateLimit } from 'express-rate-limit';
 import cors from 'cors';
 import helmet from 'helmet';
-import { testConnection } from './db/index.ts';
-import testsRouter from './v1/routes/tests.ts';
-import personsRouter from './v1/routes/persons.ts';
+import { testConnection } from '@/db/index.ts';
+import testsRouter from '@/v1/routes/tests.ts';
+import personsRouter from '@/v1/routes/persons.ts';
 
 // load env files
 await load({ envPath: '.env.local', export: true });
