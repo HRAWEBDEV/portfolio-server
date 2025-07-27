@@ -4,13 +4,17 @@ import {
  insertUserSchema,
  updateUserSchema,
 } from '../../db/schema/users.ts';
+import { persons } from '../../db/schema/persons.ts';
 import { db } from '@/db/index.ts';
 import { getResponse } from '@/utils/getResponse.ts';
 import { eq } from 'drizzle-orm';
 import { NotFound } from '@/utils/NotFound.ts';
 
 async function getUsers(_: Request, res: Response) {
- const data = await db.query.users.findMany();
+ const data = await db
+  .select()
+  .from(users)
+  .leftJoin(persons, eq(users.personId, persons.id));
  res.json(
   getResponse({
    data,
@@ -22,9 +26,11 @@ async function getUser(req: Request, res: Response) {
  const personID = req.params.id;
  const id = Number.parseInt(personID);
  insertUserSchema.shape.id.parse(id);
- const user = await db.query.persons.findFirst({
-  where: eq(users.id, id),
- });
+ const user = await db
+  .select()
+  .from(users)
+  .where(eq(users.id, id))
+  .leftJoin(persons, eq(users.personId, persons.id));
  if (!user) {
   throw new NotFound();
  }
@@ -36,9 +42,9 @@ async function getUser(req: Request, res: Response) {
 }
 
 async function insertUser(req: Request, res: Response) {
- const {} = req.body;
+ const { personId } = req.body;
  const newUser = {
-  personId: 1,
+  personId: personId,
  };
  insertUserSchema.parse(newUser);
  const insetResult = await db.insert(users).values(newUser).$returningId();
