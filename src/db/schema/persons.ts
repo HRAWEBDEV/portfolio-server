@@ -1,4 +1,10 @@
-import { mysqlTable, int, varchar, mysqlEnum } from 'drizzle-orm/mysql-core';
+import {
+ mysqlTable,
+ int,
+ varchar,
+ mysqlEnum,
+ boolean,
+} from 'drizzle-orm/mysql-core';
 import { defaultTimestamps } from '../utils/defaultTimestamps.ts';
 import { createInsertSchema, createUpdateSchema } from 'drizzle-zod';
 
@@ -11,6 +17,7 @@ const persons = mysqlTable('persons', {
  lastName: varchar('last_name', { length: 250 }).notNull(),
  age: int('age').notNull(),
  gender: mysqlEnum('gender', ['male', 'female']).notNull(),
+ isMarried: boolean('is_married').notNull().default(false),
  ...defaultTimestamps,
 });
 
