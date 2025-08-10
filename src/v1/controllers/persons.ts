@@ -21,12 +21,13 @@ const getPersons: RequestHandler = wrap(async (_, res) => {
 });
 
 const createPerson: RequestHandler = wrap(async (req, res) => {
- const { firstName, lastName, age, gender } = req.body;
+ const { firstName, lastName, age, gender, isMarried } = req.body;
  const newPerson = {
   firstName,
   lastName,
   age,
   gender,
+  isMarried,
  };
  await personInsertSchema.parseAsync(newPerson);
  const person = await db.insert(persons).values(newPerson).$returningId();
@@ -59,12 +60,13 @@ const getPerson: RequestHandler = wrap(async (req, res) => {
 
 const updatePerson: RequestHandler = wrap(async (req, res) => {
  const { id } = req.params;
- const { firstName, lastName, age, gender } = req.body;
+ const { firstName, lastName, age, gender, isMarried } = req.body;
  const updatePerson = {
   firstName,
   lastName,
   age,
   gender,
+  isMarried,
  };
  const idNum = parseInt(id);
  await personInsertSchema.shape.id.parseAsync(idNum);
