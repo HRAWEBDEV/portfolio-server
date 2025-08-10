@@ -1,2 +1,4 @@
 import { persons } from './persons.ts';
-export { persons };
+import { users } from './users.ts';
+
+export { persons, users };
