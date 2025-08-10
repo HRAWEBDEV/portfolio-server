@@ -77,7 +77,7 @@ const updatePerson: RequestHandler = wrap(async (req, res) => {
   .where(eq(persons.id, idNum));
 
  if (!result[0].affectedRows) {
-  throw new NotFound('User not found');
+  throw new NotFound('Person not found');
  }
  res.json(
   getResponse({
@@ -93,7 +93,7 @@ const deletePerson: RequestHandler = wrap(async (req, res) => {
  await personInsertSchema.shape.id.parseAsync(idNum);
  const result = await db.delete(persons).where(eq(persons.id, idNum));
  if (!result[0].affectedRows) {
-  throw new NotFound('User not found');
+  throw new NotFound('Person not found');
  }
  res.json(
   getResponse({

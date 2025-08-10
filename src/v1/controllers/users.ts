@@ -7,11 +7,12 @@ import {
  users,
  userInsertSchema,
  userUpdateSchema,
+ userPersonsView,
 } from '../../db/schema/users.ts';
 import { NotFound } from '@/utils/NotFound.ts';
 
 const getUsers: RequestHandler = wrap(async (_, res) => {
- const usersData = await db.select().from(users);
+ const usersData = await db.select().from(userPersonsView);
  res.json(
   getResponse({
    status: 'success',

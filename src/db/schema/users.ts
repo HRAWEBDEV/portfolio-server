@@ -1,4 +1,5 @@
-import { mysqlTable, int, varchar } from 'drizzle-orm/mysql-core';
+import { eq } from 'drizzle-orm';
+import { mysqlTable, int, varchar, mysqlView } from 'drizzle-orm/mysql-core';
 import { persons } from './persons.ts';
 import { defaultTimestamps } from '../utils/defaultTimestamps.ts';
 import { createInsertSchema, createUpdateSchema } from 'drizzle-zod';
@@ -21,10 +22,30 @@ const users = mysqlTable('users', {
 const userInsertSchema = createInsertSchema(users);
 const userUpdateSchema = createUpdateSchema(users);
 
+const userPersonsView = mysqlView('user-persons').as((qb) =>
+ qb
+  .select({
+   id: users.id,
+   personId: users.personId,
+   firstName: persons.firstName,
+   lastName: persons.lastName,
+   age: persons.age,
+   phoneNo: users.phoneNo,
+   email: users.email,
+   country: users.country,
+   city: users.city,
+   gender: persons.gender,
+   isMarried: persons.isMarried,
+  })
+  .from(users)
+  .leftJoin(persons, eq(users.personId, persons.id))
+);
+
 export {
  type User,
  type InsertUser,
  users,
  userInsertSchema,
  userUpdateSchema,
+ userPersonsView,
 };
