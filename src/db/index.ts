@@ -15,6 +15,7 @@ const db = drizzle({
  schema,
  mode: 'default',
  casing: 'snake_case',
+ logger: true,
 });
 
 async function testConnection(): Promise<boolean> {

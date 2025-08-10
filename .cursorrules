@@ -1,0 +1,46 @@
+# Cursor Rules for Deno Portfolio Server
+
+## Project Context
+
+This is a Deno-based REST API server with Express.js, Drizzle ORM, and MySQL database.
+
+## Code Style Guidelines
+
+- Use TypeScript with strict typing
+- Follow clean code principles with modular, extensible code
+- Use async/await for database operations
+- Implement proper error handling with try-catch blocks
+- Use meaningful variable and function names
+- Add JSDoc comments for complex functions
+
+## Architecture Patterns
+
+- Controllers handle HTTP requests and responses
+- Routes define API endpoints
+- Database operations use Drizzle ORM
+- Use middleware for authentication, validation, and error handling
+- Implement proper HTTP status codes and error responses
+
+## Common Patterns
+
+- Use expressAsyncWrapper for async route handlers
+- Implement proper error handling with expressCatchErrors
+- Use zod for request validation
+- Follow RESTful API conventions
+- Use environment variables for configuration
+
+## File Structure
+
+- `/src/v1/controllers/` - Request handlers
+- `/src/v1/routes/` - API route definitions
+- `/src/db/` - Database schema and utilities
+- `/src/utils/` - Shared utilities and helpers
+
+## Dependencies
+
+- Express.js for HTTP server
+- Drizzle ORM for database operations
+- Zod for validation
+- MySQL2 for database connection
+- Helmet for security headers
+- CORS for cross-origin requests

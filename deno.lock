@@ -3,6 +3,7 @@
   "specifiers": {
     "jsr:@std/dotenv@~0.225.5": "0.225.5",
     "npm:@types/express@^5.0.3": "5.0.3",
+    "npm:@types/node@*": "22.15.15",
     "npm:cors@^2.8.5": "2.8.5",
     "npm:drizzle-kit@*": "0.31.4_esbuild@0.25.6",
     "npm:drizzle-kit@0.31.4": "0.31.4_esbuild@0.25.6",
