@@ -1,7 +1,7 @@
-type Status = 'failed' | 'succeeded';
+type Status = 'error' | 'success';
 
 function getResponse<D, M>({
- status = 'succeeded',
+ status = 'success',
  data,
  message,
 }: {

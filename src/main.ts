@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import { testConnection } from '@/db/index.ts';
 import { notFoundHandler } from './utils/notFoundHandler.ts';
 import { expressCatchErrors } from './utils/expressCatchErrors.ts';
+import { router as usersRouter } from './v1/routes/persons.ts';
 
 // load env files
 await load({ envPath: '.env.local', export: true });
@@ -39,6 +40,7 @@ app.get('/healthy', (_req, res) => {
  });
 });
 // routes
+app.use(`${appBaseUri}/persons`, usersRouter);
 // not found
 app.use(notFoundHandler);
 app.use(expressCatchErrors);
