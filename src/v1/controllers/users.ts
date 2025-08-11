@@ -44,17 +44,17 @@ const getUser: RequestHandler = wrap(async (req, res) => {
  const { id } = req.params;
  const idNum = parseInt(id);
  await userInsertSchema.shape.id.parseAsync(idNum);
- const user = await db
+ const users = await db
   .select()
   .from(userPersonsView)
   .where(eq(userPersonsView.id, idNum));
- if (!user) {
+ if (!users.length) {
   throw new NotFound('User not found');
  }
  res.json(
   getResponse({
    status: 'success',
-   data: user,
+   data: users[0],
   })
  );
 });
