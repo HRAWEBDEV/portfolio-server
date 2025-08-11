@@ -43,11 +43,11 @@ const createUser: RequestHandler = wrap(async (req, res) => {
 const getUser: RequestHandler = wrap(async (req, res) => {
  const { id } = req.params;
  const idNum = parseInt(id);
-
  await userInsertSchema.shape.id.parseAsync(idNum);
- const user = await db.query.persons.findFirst({
-  where: eq(users.id, idNum),
- });
+ const user = await db
+  .select()
+  .from(userPersonsView)
+  .where(eq(userPersonsView.id, idNum));
  if (!user) {
   throw new NotFound('User not found');
  }

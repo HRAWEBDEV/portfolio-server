@@ -10,7 +10,7 @@ export const expressCatchErrors: ErrorRequestHandler = (
  res,
  _next
 ) => {
- const resStatus = 'failed';
+ const resStatus = 'error';
  // handle zod validation error
  if (err instanceof ZodError) {
   res.status(status.BAD_REQUEST).json(
