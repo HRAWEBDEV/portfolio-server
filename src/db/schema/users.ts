@@ -11,7 +11,9 @@ const users = mysqlTable('users', {
  id: int('id').primaryKey().autoincrement(),
  personId: int('person_id')
   .notNull()
-  .references(() => persons.id),
+  .references(() => persons.id, {
+   onDelete: 'cascade',
+  }),
  phoneNo: varchar('phone_no', { length: 30 }).notNull(),
  email: varchar('email', { length: 250 }).notNull(),
  country: varchar('country', { length: 250 }).notNull(),
