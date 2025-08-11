@@ -8,18 +8,18 @@
     "npm:drizzle-kit@*": "0.31.4_esbuild@0.25.6",
     "npm:drizzle-kit@0.31.4": "0.31.4_esbuild@0.25.6",
     "npm:drizzle-kit@~0.31.4": "0.31.4_esbuild@0.25.6",
-    "npm:drizzle-orm@~0.44.3": "0.44.3_mysql2@3.14.2",
-    "npm:drizzle-zod@~0.8.2": "0.8.2_drizzle-orm@0.44.3__mysql2@3.14.2_zod@4.0.5_mysql2@3.14.2",
+    "npm:drizzle-orm@~0.44.4": "0.44.4_mysql2@3.14.3",
+    "npm:drizzle-zod@~0.8.3": "0.8.3_drizzle-orm@0.44.4__mysql2@3.14.3_zod@4.0.17_mysql2@3.14.3",
     "npm:express-rate-limit@^8.0.1": "8.0.1_express@5.1.0",
     "npm:express@^5.1.0": "5.1.0",
     "npm:helmet@^8.1.0": "8.1.0",
     "npm:http-status@^2.1.0": "2.1.0",
-    "npm:mysql2@^3.14.2": "3.14.2",
+    "npm:mysql2@^3.14.3": "3.14.3",
     "npm:p@*": "0.2.0",
     "npm:pa@*": "0.1.1",
     "npm:pat@*": "0.0.1",
     "npm:path@*": "0.12.7",
-    "npm:zod@^4.0.5": "4.0.5"
+    "npm:zod@^4.0.17": "4.0.17"
   },
   "jsr": {
     "@std/dotenv@0.225.5": {
@@ -446,8 +446,8 @@
     "drizzle-orm@0.44.3": {
       "integrity": "sha512-8nIiYQxOpgUicEL04YFojJmvC4DNO4KoyXsEIqN44+g6gNBr6hmVpWk3uyAt4CaTiRGDwoU+alfqNNeonLAFOQ=="
     },
-    "drizzle-orm@0.44.3_mysql2@3.14.2": {
-      "integrity": "sha512-8nIiYQxOpgUicEL04YFojJmvC4DNO4KoyXsEIqN44+g6gNBr6hmVpWk3uyAt4CaTiRGDwoU+alfqNNeonLAFOQ==",
+    "drizzle-orm@0.44.4_mysql2@3.14.3": {
+      "integrity": "sha512-ZyzKFpTC/Ut3fIqc2c0dPZ6nhchQXriTsqTNs4ayRgl6sZcFlMs9QZKPSHXK4bdOf41GHGWf+FrpcDDYwW+W6Q==",
       "dependencies": [
         "mysql2"
       ],
@@ -455,10 +455,10 @@
         "mysql2"
       ]
     },
-    "drizzle-zod@0.8.2_drizzle-orm@0.44.3__mysql2@3.14.2_zod@4.0.5_mysql2@3.14.2": {
-      "integrity": "sha512-9Do/16OjFFNrQDZgvMtxtDDwKWbFOxUAIwNPKX98SfxrP8H18vhN1BvNXbhelLcdgCE7GEaXDJqBjMExSkhpkA==",
+    "drizzle-zod@0.8.3_drizzle-orm@0.44.4__mysql2@3.14.3_zod@4.0.17_mysql2@3.14.3": {
+      "integrity": "sha512-66yVOuvGhKJnTdiqj1/Xaaz9/qzOdRJADpDa68enqS6g3t0kpNkwNYjUuaeXgZfO/UWuIM9HIhSlJ6C5ZraMww==",
       "dependencies": [
-        "drizzle-orm@0.44.3_mysql2@3.14.2",
+        "drizzle-orm@0.44.4_mysql2@3.14.3",
         "zod"
       ]
     },
@@ -742,8 +742,8 @@
     "ms@2.1.3": {
       "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
     },
-    "mysql2@3.14.2": {
-      "integrity": "sha512-YD6mZMeoypmheHT6b2BrVmQFvouEpRICuvPIREulx2OvP1xAxxeqkMQqZSTBefv0PiOBKGYFa2zQtY+gf/4eQw==",
+    "mysql2@3.14.3": {
+      "integrity": "sha512-fD6MLV8XJ1KiNFIF0bS7Msl8eZyhlTDCDl75ajU5SJtpdx9ZPEACulJcqJWr1Y8OYyxsFc4j3+nflpmhxCU5aQ==",
       "dependencies": [
         "aws-ssl-profiles",
         "denque",
@@ -982,8 +982,8 @@
     "wrappy@1.0.2": {
       "integrity": "sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ=="
     },
-    "zod@4.0.5": {
-      "integrity": "sha512-/5UuuRPStvHXu7RS+gmvRf4NXrNxpSllGwDnCBcJZtQsKrviYXm54yDGV2KYNLT5kq0lHGcl7lqWJLgSaG+tgA=="
+    "zod@4.0.17": {
+      "integrity": "sha512-1PHjlYRevNxxdy2JZ8JcNAw7rX8V9P1AKkP+x/xZfxB0K5FYfuV+Ug6P/6NVSR2jHQ+FzDDoDHS04nYUsOIyLQ=="
     }
   },
   "workspace": {
@@ -992,14 +992,14 @@
       "npm:@types/express@^5.0.3",
       "npm:cors@^2.8.5",
       "npm:drizzle-kit@~0.31.4",
-      "npm:drizzle-orm@~0.44.3",
-      "npm:drizzle-zod@~0.8.2",
+      "npm:drizzle-orm@~0.44.4",
+      "npm:drizzle-zod@~0.8.3",
       "npm:express-rate-limit@^8.0.1",
       "npm:express@^5.1.0",
       "npm:helmet@^8.1.0",
       "npm:http-status@^2.1.0",
-      "npm:mysql2@^3.14.2",
-      "npm:zod@^4.0.5"
+      "npm:mysql2@^3.14.3",
+      "npm:zod@^4.0.17"
     ]
   }
 }

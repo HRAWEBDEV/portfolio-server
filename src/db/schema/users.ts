@@ -22,7 +22,7 @@ const users = mysqlTable('users', {
 const userInsertSchema = createInsertSchema(users);
 const userUpdateSchema = createUpdateSchema(users);
 
-const userPersonsView = mysqlView('user-persons').as((qb) =>
+const userPersonsView = mysqlView('user_persons').as((qb) =>
  qb
   .select({
    id: users.id,
